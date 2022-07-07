@@ -1,0 +1,54 @@
+body {
+    text-align: center;
+    background-color: lightgray;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+}
+
+.orange {
+    background-color: orange;
+}
+
+button:hover {
+    background-color: white;
+}
+
+.container1 {
+    border: 4px solid black;
+    width: 500px;
+    height: 550px;
+    margin: auto;
+    background-color: darkblue;
+}
+
+#screen {
+    border: 2px solid red;
+    grid-area: screen;
+    width: 95%;
+    height: 25%;
+    margin: 10px;
+    background-color: lightblue;
+    text-align: right;
+    font-size: 50px;
+}
+
+.btn {
+    height: 77.5px;
+    font-size: 25px;
+}
+
+.btns{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
