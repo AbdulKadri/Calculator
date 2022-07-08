@@ -4,17 +4,20 @@ let initialOperator = null
 
 const numberButtons = document.querySelectorAll('[data-number]')
 const operatorButtons = document.querySelectorAll('[data-operator]')
-const btns = document.querySelectorAll('.btn')
 const clear = document.getElementById('clear')
+const del = document.getElementById('delete')
+const square = document.getElementById('square')
+const decimal = document.getElementById('decimal')
 const pos_neg = document.getElementById('pos_neg')
 const equal = document.getElementById('equal')
 const screen = document.getElementById('screen')
 const results = document.getElementById('results')
 
 numberButtons.forEach((number) => {
-    number.addEventListener('click', () => changeScreen(number.textContent))
-    // initialNumber = number.textContent
-    // results.textContent = initialNumber
+    number.addEventListener('click', () => {
+        changeScreen(number.textContent)
+        changeResults(number.textContent)
+    })   
 })
 
 operatorButtons.forEach((operator) => {
@@ -26,7 +29,15 @@ operatorButtons.forEach((operator) => {
 clear.addEventListener('click', clearScreen)
 
 function changeScreen(value) {
-    screen.textContent += value
+    if (value === '+' || value === '-' || value === '*' || value === '/') {
+        screen.textContent += (' ' + `${value}` + ' ')
+    } else {
+        screen.textContent += (`${value}`)
+    }
+}
+
+function changeResults(value) {
+    initialNumber += value
 }
 
 function clearScreen() {
