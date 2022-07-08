@@ -35,6 +35,10 @@ button:hover {
     font-size: 50px;
 }
 
+p {
+    margin-top: 10px;
+}
+
 .btn {
     height: 77.5px;
     font-size: 25px;
