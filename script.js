@@ -10,7 +10,6 @@ const power = document.getElementById('power')
 const decimal = document.getElementById('decimal')
 const pos_neg = document.getElementById('pos_neg')
 const equal = document.getElementById('equal')
-const screen = document.getElementById('screen')
 const calculation = document.getElementById('calculation')
 const results = document.getElementById('results')
 
@@ -90,6 +89,7 @@ function changeSign() {
     num = parseFloat(calculation.textContent)
     if (num > 0) {
         calculation.textContent = '-' + calculation.textContent
+        secondNumber = calculation.textContent
     } else {
         calculation.textContent = calculation.textContent.substring(1)
     }
