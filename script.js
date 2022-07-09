@@ -11,12 +11,14 @@ const decimal = document.getElementById('decimal')
 const pos_neg = document.getElementById('pos_neg')
 const equal = document.getElementById('equal')
 const screen = document.getElementById('screen')
+const calculation = document.getElementById('calculation')
 const results = document.getElementById('results')
+
+results.textContent = '0'
 
 numberButtons.forEach((number) => {
     number.addEventListener('click', () => {
         changeScreen(number.textContent)
-        changeResults(number.textContent)
     })   
 })
 
@@ -29,73 +31,78 @@ clear.addEventListener('click', clearScreen)
 
 
 function changeScreen(value) {
-    if (value === '+' || value === '-' || value === '*' || value === '/') {
-        initialNumber = screen.textContent
+    if (value === '+' || value === '-' || value === '*' || value === '/' || value === '^') {
+        if (results.hasAttribute('class', 'start_up')) {
+            results.classList.remove('start_up')
+        }
+        if (initialOperator === null) {
+            initialNumber = calculation.textContent    
+        }
         initialOperator = `${value}`
-        screen.textContent += (' ' + `${value}` + ' ')
+        results.textContent =  (initialNumber + ' ' + initialOperator)
+        calculation.textContent = ''
     } else {
-        screen.textContent += (`${value}`)
+        calculation.textContent += value
+        if (initialOperator !== null) {
+            secondNumber = calculation.textContent
+        }
     }
 }
 
 function evaluate() {
-    empty()
-    screen.textContent = operate(initialOperator, initialNumber, secondNumber)
+    calculation.textContent = ''
+    results.textContent = operate(initialOperator, initialNumber, secondNumber)
 }
 
-function changeResults(value) {
-    initialNumber += value
-}
-
-function clearScreen() {
-    screen.textContent = ''
+function clearScreen() { 
+    calculation.textContent = ''
+    results.classList.add('start_up')
+    results.textContent = '0'
     initialNumber = ''
     secondNumber = ''
     initialOperator = null
 }
 
-function empty() {
-    screen.textContent = ''
-}
-
 function add(num1, num2) {
     return num1 + num2
 }
-
 function subtract(num1, num2) {
     return num1 - num2
 }
-
 function multiply(num1, num2) {
     return num1 * num2
 }
-
 function divide(num1, num2) {
     return num1 / num2
 }
-
 function _power(num1, num2) {
     return num1 ** num2
 }
-
 function changeSign(num1) {
     return -num1
 }
 
 function operate(operator, num1, num2) {
+    floatnum1 = parseFloat(num1)
+    floatnum2 = parseFloat(num2)
     switch (operator) {
         case '+':
-            return add(num1, num2)
+            initialNumber = add(floatnum1, floatnum2)
+            return (initialNumber + ' ' +initialOperator)
         case '-':
-            return subtract(num1, num2)
+            initialNumber = subtract(floatnum1, floatnum2)
+            return (initialNumber + ' ' +initialOperator)
         case '*':
-            return multiply(num1, num2)
+            initialNumber = multiply(floatnum1, floatnum2)
+            return (initialNumber + ' ' +initialOperator)
         case '/':
-            return divide(num1, num2)
+            initialNumber = divide(floatnum1, floatnum2)
+            return (initialNumber + ' ' +initialOperator)
         case '^':
-            return _power(num1, num2)
+            initialNumber = _power(floatnum1, floatnum2)
+            return (initialNumber + ' ' +initialOperator)
         case '+/-':
-            return changeSign(num1)
+            return changeSign(floatnum1)
         default:
             return null
     }
