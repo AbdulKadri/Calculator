@@ -101,6 +101,9 @@ function _power(num1, num2) {
     return num1 ** num2
 }
 function addDecimal() {
+    if (calculation.textContent.includes('.')) {
+        return (_error.textContent = 'Your number already contains a decimal')
+    }
     calculation.textContent += '.'
 }
 function changeSign() {
