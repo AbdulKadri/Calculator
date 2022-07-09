@@ -32,6 +32,7 @@ clear.addEventListener('click', clearScreen)
 del.addEventListener('click', _delete)
 decimal.addEventListener('click', addDecimal)
 pos_neg.addEventListener('click', changeSign)
+window.addEventListener('keydown', keyboardInput)
 
 function changeScreen(value) {
     _error.textContent = ''
@@ -129,4 +130,14 @@ function operate(operator, num1, num2) {
         default:
             return null
     }
+}
+
+function keyboardInput(e) {
+    if (e.key >= 0 && e.key <= 9) changeScreen(e.key)
+    if (e.key === '.') addDecimal()
+    if (e.key === '=' || e.key === 'Enter') evaluate()
+    if (e.key === 'Backspace') _delete()
+    if (e.key === 'Escape') clearScreen()
+    if (e.key === '+' || e.key == '-' || e.key === '*' || e.key === '/' || e.key === '^')
+        changeScreen(e.key)
 }
