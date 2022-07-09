@@ -29,7 +29,7 @@ operatorButtons.forEach((operator) => {
 equal.addEventListener('click', evaluate)
 clear.addEventListener('click', clearScreen)
 del.addEventListener('click', _delete)
-
+decimal.addEventListener('click', addDecimal)
 
 function changeScreen(value) {
     if (value === '+' || value === '-' || value === '*' || value === '/' || value === '^') {
@@ -81,6 +81,9 @@ function divide(num1, num2) {
 }
 function _power(num1, num2) {
     return num1 ** num2
+}
+function addDecimal() {
+    calculation.textContent += '.'
 }
 function changeSign(num1) {
     return -num1
