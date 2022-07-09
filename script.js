@@ -10,8 +10,10 @@ const power = document.getElementById('power')
 const decimal = document.getElementById('decimal')
 const pos_neg = document.getElementById('pos_neg')
 const equal = document.getElementById('equal')
+const screen = document.getElementById('screen')
 const calculation = document.getElementById('calculation')
 const results = document.getElementById('results')
+const _error = document.getElementById('error')
 
 results.textContent = '0'
 
@@ -32,6 +34,7 @@ decimal.addEventListener('click', addDecimal)
 pos_neg.addEventListener('click', changeSign)
 
 function changeScreen(value) {
+    _error.textContent = ''
     if (value === '+' || value === '-' || value === '*' || value === '/' || value === '^') {
         if (results.hasAttribute('class', 'start_up')) {
             results.classList.remove('start_up')
@@ -49,10 +52,17 @@ function changeScreen(value) {
         }
     }
 }
-
 function evaluate() {
     calculation.textContent = ''
-    results.textContent = operate(initialOperator, initialNumber, secondNumber)
+    if (secondNumber === '') {
+        _error.textContent = 'There needs to be two operands and an operator to work!'
+        clearScreen()
+    } else if (initialOperator === '/' && secondNumber == 0) {
+        _error.textContent = 'You can\'t divide by 0!'
+        clearScreen()
+    } else {
+        results.textContent = operate(initialOperator, initialNumber, secondNumber)
+    }
 }
 function clearScreen() { 
     calculation.textContent = ''
