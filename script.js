@@ -51,6 +51,10 @@ function changeScreen(value) {
         calculation.textContent = ''
     } else {
         calculation.textContent += value
+        calculation.textContent = calculation.textContent.substring(0, 10)
+        if (calculation.textContent.length == 10) {
+            _error.textContent = 'You have reached the limit of the display'
+        }
         if (initialOperator !== null) {
             secondNumber = calculation.textContent
         }

@@ -46,8 +46,7 @@ button:hover:not(#equal, #clear, #delete) {
 }
 
 #results {
-    font-size: 40px;
-
+    font-size: 30px;
 }
 
 #calculation {
@@ -72,7 +71,6 @@ button:hover:not(#equal, #clear, #delete) {
 .btns{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* margin: 0px 40px; */
 }
 
 .start_up {
