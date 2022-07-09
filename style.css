@@ -78,3 +78,10 @@ button:hover:not(#equal, #clear, #delete) {
 .start_up {
     opacity: 0;
 }
+
+#error {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: large;
+    color: orange;
+}

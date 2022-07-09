@@ -28,6 +28,7 @@ operatorButtons.forEach((operator) => {
 
 equal.addEventListener('click', evaluate)
 clear.addEventListener('click', clearScreen)
+del.addEventListener('click', _delete)
 
 
 function changeScreen(value) {
@@ -53,7 +54,6 @@ function evaluate() {
     calculation.textContent = ''
     results.textContent = operate(initialOperator, initialNumber, secondNumber)
 }
-
 function clearScreen() { 
     calculation.textContent = ''
     results.classList.add('start_up')
@@ -62,7 +62,11 @@ function clearScreen() {
     secondNumber = ''
     initialOperator = null
 }
-
+function _delete() {
+    calculation.textContent = calculation.textContent
+        .toString()
+        .slice(0, -1)
+}
 function add(num1, num2) {
     return num1 + num2
 }
