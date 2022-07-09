@@ -30,6 +30,7 @@ equal.addEventListener('click', evaluate)
 clear.addEventListener('click', clearScreen)
 del.addEventListener('click', _delete)
 decimal.addEventListener('click', addDecimal)
+pos_neg.addEventListener('click', changeSign)
 
 function changeScreen(value) {
     if (value === '+' || value === '-' || value === '*' || value === '/' || value === '^') {
@@ -85,8 +86,13 @@ function _power(num1, num2) {
 function addDecimal() {
     calculation.textContent += '.'
 }
-function changeSign(num1) {
-    return -num1
+function changeSign() {
+    num = parseFloat(calculation.textContent)
+    if (num > 0) {
+        calculation.textContent = '-' + calculation.textContent
+    } else {
+        calculation.textContent = calculation.textContent.substring(1)
+    }
 }
 
 function operate(operator, num1, num2) {
@@ -108,8 +114,8 @@ function operate(operator, num1, num2) {
         case '^':
             initialNumber = _power(floatnum1, floatnum2)
             return (initialNumber + ' ' +initialOperator)
-        case '+/-':
-            return changeSign(floatnum1)
+        // case '+/-':
+        //     return changeSign(floatnum1)
         default:
             return null
     }
