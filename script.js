@@ -43,6 +43,9 @@ function changeScreen(value) {
         if (initialOperator === null) {
             initialNumber = calculation.textContent    
         }
+        if (secondNumber !== '') {
+            evaluate()
+        }
         initialOperator = `${value}`
         results.textContent =  (initialNumber + ' ' + initialOperator)
         calculation.textContent = ''
